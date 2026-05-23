@@ -1,0 +1,42 @@
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;              /* lift it up */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.wheel {
+  width: 4px;
+  height: 10px;
+  background: white;
+  border-radius: 4px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollDown 1.6s infinite ease-in-out;
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+}
