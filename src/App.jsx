@@ -7,18 +7,28 @@ import Faqs from './components/Faqs/Faqs'
 import Banner from './components/Banner/Banner'
 import Footer from './components/Footer/Footer'
 import { Form } from 'react-router-dom'
+import Loader from './components/Loader/Loader'
+import {useState} from 'react'
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
-    <Navbar />
-    <Hero />
-    <Services />
-    <FlowChart />
-    <Faqs />
-    <Footer />
+      {loading ? (
+        <Loader onFinish={() => setLoading(false)} />
+      ) : (
+        <>
+          <Navbar />
+          <Hero />
+          <Services />
+          <FlowChart />
+          <Faqs />
+          <Footer />
+        </>
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
