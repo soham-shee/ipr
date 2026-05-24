@@ -18,6 +18,18 @@ export default function Navbar() {
       .replace(/[^a-z0-9\s]/g, "")
       .replace(/\s+/g, "-");
 
+  // ✅ helper to support route + mailto + tel
+  const getLink = (opt) => {
+    if (typeof opt === "string") {
+      return {
+        type: "route",
+        label: opt,
+        value: generatePath(opt),
+      };
+    }
+    return opt;
+  };
+
   const menuItems = [
     {
       name: "Trademark",
@@ -40,8 +52,16 @@ export default function Navbar() {
         "Design Examination Reply",
         "Design Renewal",
         "Design Hearing",
-        "Cancellation of Design",
-        "Any Legal actions for protection of Designs",
+        {
+          label: "Cancellation of Design",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Any Legal actions for protection of Designs",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
       ],
     },
     {
@@ -49,14 +69,26 @@ export default function Navbar() {
       options: [
         "Copyright Registration",
         "Copyright Assignment",
-        "Any Legal actions for protection of Copyright",
+        {
+          label: "Any Legal actions for protection of Copyright",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
       ],
     },
     {
       name: "Litigation",
       options: [
-        "Civil Matters",
-        "Criminal Matters",
+        {
+          label: "Civil Matters",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Criminal Matters",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
       ],
     },
     {
@@ -66,15 +98,51 @@ export default function Navbar() {
     {
       name: "MISC",
       options: [
-        "FSSAI Registration",
-        "MSME Registration",
-        "Company Registration",
-        "Agreements and contracts",
-        "Marriage Certificates",
-        "Legal Notices",
-        "Assignments",
-        "GST Registration",
-        "GST Return Filing",
+        {
+          label: "FSSAI Registration",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "MSME Registration",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Company Registration",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Agreements and contracts",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Marriage Certificates",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Legal Notices",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "Assignments",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "GST Registration",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
+        {
+          label: "GST Return Filing",
+          type: "mailto",
+          value: "mailto:Legalshades26@gmail.com?subject=Legal%20Consultation%20Request"
+        },
       ],
     },
   ];
@@ -87,7 +155,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* 🔥 Mobile Overlay */}
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -100,20 +168,12 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* <nav
-          className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl px-8 lg:px-16 py-3 flex items-center justify-between transition-all duration-300 ${
-            scrolled
-              ? "bg-black/80 backdrop-blur-lg shadow-lg"
-              : "backdrop-blur-sm"
-          }`}
-        > */}
-
       <div className="absolute pt-16 w-full py-4 text-gray-50 font-extrabold z-50">
         <nav
           className={`fixed top-4 left-1/2 -translate-x-1/2 w-[95%] rounded-full max-w-7xl px-8 lg:px-16 py-3 flex items-center justify-between transition-all duration-300 ${
             scrolled
-      ? "bg-black/40 backdrop-blur-xl border-b border-white/20 shadow-[0_8px_32px_rgba(255,255,255,0.05)]"
-      : "bg-black/2 backdrop-blur-md border-b border-white/10"
+              ? "bg-black/40 backdrop-blur-xl border-b border-white/20 shadow-[0_8px_32px_rgba(255,255,255,0.05)]"
+              : "bg-black/2 backdrop-blur-md border-b border-white/10"
           }`}
         >
           {/* Logo */}
@@ -149,20 +209,38 @@ export default function Navbar() {
                       className="absolute left-0 top-full mt-5 w-72 bg-slate-100/95 backdrop-blur-xl rounded-2xl shadow-2xl p-5 text-sm space-y-5 border border-white/10"
                     >
                       {item.options.map((opt) => {
-                        const path = generatePath(opt);
-                        const isActive = location.pathname === path;
+                        const link = getLink(opt);
 
+                        const isActive =
+                          link.type === "route" &&
+                          location.pathname === link.value;
+
+                        const baseClass = `block transition ${
+                          isActive
+                            ? "text-slate-800"
+                            : "text-gray-500 hover:text-slate-800"
+                        }`;
+
+                        // ✅ MAILTO / TEL / EXTERNAL
+                        if (
+                          link.type === "mailto" ||
+                          link.type === "tel" ||
+                          link.type === "external"
+                        ) {
+                          return (
+                            <motion.div key={link.label} whileHover={{ x: 5 }}>
+                              <a href={link.value} className={baseClass}>
+                                {link.label}
+                              </a>
+                            </motion.div>
+                          );
+                        }
+
+                        // ROUTE
                         return (
-                          <motion.div key={opt} whileHover={{ x: 5 }}>
-                            <Link
-                              to={path}
-                              className={`block transition ${
-                                isActive
-                                  ? "text-slate-800"
-                                  : "text-gray-500 hover:text-slate-800"
-                              }`}
-                            >
-                              {opt}
+                          <motion.div key={link.label} whileHover={{ x: 5 }}>
+                            <Link to={link.value} className={baseClass}>
+                              {link.label}
                             </Link>
                           </motion.div>
                         );
@@ -176,14 +254,14 @@ export default function Navbar() {
 
           {/* Right Side */}
           <div className="flex items-center gap-3">
-            <Link
-              to="mailto:Legalshades26@gmail.com"
+            <a
+              href="mailto:Legalshades26@gmail.com"
               className="hidden lg:block px-4 py-1.5 rounded-full border border-gray-100 text-gray-100 font-medium hover:bg-gray-800 transition"
             >
               Contact Us
-            </Link>
+            </a>
 
-            {/* Animated Hamburger */}
+            {/* Hamburger */}
             <button
               className="lg:hidden relative w-8 h-8 flex flex-col justify-center items-center"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -217,7 +295,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-full left-0 w-full mt-4 z-50 bg-black/50 backdrop-blur-xl rounded-2xl shadow-xl p-6 flex flex-col gap-4 lg:hidden border border-white/10 z-50 max-h-[80vh] overflow-y-auto scrollbar-thin"
+                className="absolute top-full left-0 w-full mt-4 z-50 bg-black/50 backdrop-blur-xl rounded-2xl shadow-xl p-6 flex flex-col gap-4 lg:hidden border border-white/10 max-h-[80vh] overflow-y-auto"
               >
                 {menuItems.map((item) => (
                   <div key={item.name}>
@@ -231,7 +309,9 @@ export default function Navbar() {
                     >
                       {item.name}
                       <motion.span
-                        animate={{ rotate: mobileSubOpen === item.name ? 45 : 0 }}
+                        animate={{
+                          rotate: mobileSubOpen === item.name ? 45 : 0,
+                        }}
                       >
                         +
                       </motion.span>
@@ -247,16 +327,33 @@ export default function Navbar() {
                           className="pl-4 overflow-hidden"
                         >
                           {item.options.map((opt) => {
-                            const path = generatePath(opt);
+                            const link = getLink(opt);
+
+                            if (
+                              link.type === "mailto" ||
+                              link.type === "tel" ||
+                              link.type === "external"
+                            ) {
+                              return (
+                                <a
+                                  key={link.label}
+                                  href={link.value}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block text-gray-400 text-sm py-1 hover:text-white"
+                                >
+                                  {link.label}
+                                </a>
+                              );
+                            }
 
                             return (
                               <Link
-                                key={opt}
-                                to={path}
+                                key={link.label}
+                                to={link.value}
                                 onClick={() => setMobileOpen(false)}
                                 className="block text-gray-400 text-sm py-1 hover:text-white"
                               >
-                                {opt}
+                                {link.label}
                               </Link>
                             );
                           })}
@@ -266,13 +363,14 @@ export default function Navbar() {
                   </div>
                 ))}
 
-                <Link
-                  to="mailto:Legalshades26@gmail.com"
+                {/* Contact button */}
+                <a
+                  href="mailto:Legalshades26@gmail.com"
                   onClick={() => setMobileOpen(false)}
                   className="mt-4 px-4 py-2 rounded-full border border-gray-400 text-white font-medium text-center"
                 >
                   Contact Us
-                </Link>
+                </a>
               </motion.div>
             )}
           </AnimatePresence>

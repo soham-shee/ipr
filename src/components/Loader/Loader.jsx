@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const steps = [
   "Loading assets...",
-  "Almost ready...",
   "Welcome to Legal Shades!"
 ];
 
-export default function Loader({ onFinish }) {
+export default function Loader({ onFinish, fading }) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -19,16 +19,25 @@ export default function Loader({ onFinish }) {
     } else {
       const done = setTimeout(() => {
         onFinish?.();
-      }, 1000);
+      }, 100);
 
       return () => clearTimeout(done);
     }
   }, [index, onFinish]);
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black text-white z-50">
+    <motion.div
+      initial={{ opacity: 1, scale: 1 }}
+      animate={
+        fading
+          ? { opacity: 0, scale: 1.05 }
+          : { opacity: 1, scale: 1 }
+      }
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      className="fixed inset-0 flex items-center justify-center bg-black text-white z-50"
+    >
       <div className="text-center space-y-4">
-        
+
         {/* Spinner */}
         <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin mx-auto" />
 
@@ -40,13 +49,13 @@ export default function Loader({ onFinish }) {
         {/* Progress bar */}
         <div className="w-64 h-1 bg-white/20 rounded">
           <div
-            className="h-full bg-white transition-all duration-300"
+            className="h-full bg-white transition-all duration-1000"
             style={{
               width: `${((index + 1) / steps.length) * 100}%`,
             }}
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
