@@ -1,5 +1,4 @@
 import { ChevronDoubleRightIcon } from '@heroicons/react/20/solid'
-import img from "../../assets/design.jpg";
 
 
 export default function Example() {
@@ -45,7 +44,7 @@ export default function Example() {
         <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
           <img
             alt=""
-            src={img}
+            src="https://ik.imagekit.io/sohamshee/Legal%20Shades/design_qtQL6J-ul.jpg"
             className="w-3xl max-w-none rounded-xl bg-gray-800 shadow-xl ring-1 ring-white/10 sm:w-228"
           />
         </div>

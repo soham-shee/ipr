@@ -29,13 +29,13 @@
   }
 
   .bg-img{
-    background-image: url('./assets/bg-1.jpg');
+    background-image: url('https://ik.imagekit.io/sohamshee/Legal%20Shades/bg-1_h4rIpGBe_.jpg');
     background-size: cover;
     background-position: center;
   }
 
   .bg-img2{
-    background-image: url('./assets/bg-2.jpg');
+    background-image: url('https://ik.imagekit.io/sohamshee/Legal%20Shades/bg-2_0cSpHHKr7.jpg');
     background-size: cover;
     background-position: center;
   }

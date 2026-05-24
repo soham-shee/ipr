@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import Banner from "../Banner/Banner";
 import "./Navbar.css";
-import img from "../../assets/logo.png";
 
 export default function Navbar() {
   const [openMenu, setOpenMenu] = useState(null);
@@ -120,7 +119,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src={img}
+              src="https://ik.imagekit.io/sohamshee/Legal%20Shades/logo_S1yKpT4vL.png"
               className="h-10"
               alt=""
             />

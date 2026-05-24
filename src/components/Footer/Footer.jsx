@@ -1,5 +1,5 @@
 import React from 'react';
-import img from "../../assets/logo.png";
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
@@ -11,7 +11,7 @@ export default function Footer() {
             
                         <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col items-center md:items-start text-center md:text-left">
                             <a href="https://www.legalshades.com">
-                                <img src={img} alt="Logo" className='w-50' />
+                                <img src="https://ik.imagekit.io/sohamshee/Legal%20Shades/logo_S1yKpT4vL.png" alt="Logo" className='w-50' />
                             </a>
                             <div className='w-full max-w-52 h-px mt-8 bg-linear-to-r from-black via-white/25 to-black'></div>
                             <p className='text-sm text-white/60 mt-6 max-w-sm leading-relaxed'>
@@ -22,11 +22,27 @@ export default function Footer() {
                         <div className="w-full md:w-[45%] lg:w-[15%] flex flex-col items-center md:items-start text-center md:text-left">
                             <h3 className='text-sm text-white font-medium'>Important Links</h3>
                             <div className="flex flex-col gap-2 mt-6">
-                                <a href="/" className='text-sm text-white/60 hover:text-white transition-colors'>Home</a>
-                                <a href="/trademark" className='text-sm text-white/60 hover:text-white transition-colors'>Trademark</a>
-                                <a href="/design" className='text-sm text-white/60 hover:text-white transition-colors'>Design</a>
-                                <a href="/copyright" className='text-sm text-white/60 hover:text-white transition-colors'>Copyright</a>
-                                <a href="/misc" className='text-sm text-white/60 hover:text-white transition-colors'>MISC</a>
+                                <div className="flex flex-col gap-2 mt-1">
+                                    <Link to="/" className="text-sm text-white/60 hover:text-white transition-colors">
+                                        Home
+                                    </Link>
+
+                                    <Link to="/trademark" className="text-sm text-white/60 hover:text-white transition-colors">
+                                        Trademark
+                                    </Link>
+
+                                    <Link to="/design" className="text-sm text-white/60 hover:text-white transition-colors">
+                                        Design
+                                    </Link>
+
+                                    <Link to="/copyright" className="text-sm text-white/60 hover:text-white transition-colors">
+                                        Copyright
+                                    </Link>
+
+                                    <Link to="/misc" className="text-sm text-white/60 hover:text-white transition-colors">
+                                        Misc.
+                                    </Link>
+                                    </div>
                             </div>
                         </div>
             
