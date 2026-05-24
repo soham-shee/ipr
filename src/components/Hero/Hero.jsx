@@ -145,8 +145,8 @@ messages.forEach((msg) => {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-3xl px-6 text-center text-white">
-        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight">
-          Welcome to <span className="text-amber-500">LegalOffice</span>
+        <h1 className="text-5xl md:text-5xl font-semibold tracking-tight">
+          Welcome to <span className=" font-semibold text-amber-500">Legal Shades</span>
         </h1>
 
         {/* <p

@@ -218,7 +218,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-full left-0 w-full mt-4 bg-black/50 backdrop-blur-xl rounded-2xl shadow-xl p-6 flex flex-col gap-4 lg:hidden border border-white/10 z-50 max-h-[80vh] overflow-y-auto scrollbar-thin"
+                className="absolute top-full left-0 w-full mt-4 z-50 bg-black/50 backdrop-blur-xl rounded-2xl shadow-xl p-6 flex flex-col gap-4 lg:hidden border border-white/10 z-50 max-h-[80vh] overflow-y-auto scrollbar-thin"
               >
                 {menuItems.map((item) => (
                   <div key={item.name}>
