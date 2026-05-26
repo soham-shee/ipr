@@ -12,7 +12,6 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 const App = () => {
-  const navigate = useNavigate();
 
   const features = [
     {
@@ -81,10 +80,6 @@ const App = () => {
     },
   ];
 
-  const handleClick = (path) => {
-    navigate(path);
-  };
-
   return (
     <div className="bg-white px-8 lg:px-20 xl:px-[120px] py-20 flex flex-col items-center">
 
@@ -106,7 +101,6 @@ const App = () => {
           <Link
             key={index}
             to={feature.path}
-            onClick={() => handleClick(feature.path)}
             className={`relative p-6 md:p-8 flex flex-col gap-4 border-r border-b border-zinc-200 transition-all duration-300 cursor-pointer ${
               index === 0
                 ? "bg-gradient-to-b from-white to-[#EEF0FF]"
