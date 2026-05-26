@@ -14,7 +14,7 @@ function Hero() {
 
   const services = [
     { name: "Trademark", desc: "Protect your brand identity." },
-    { name: "Patent", desc: "Secure rights for inventions." },
+    { name: "MSME", desc: "Protect your business interests whether large or small." },
     { name: "Copyright", desc: "Protect creative works." },
     { name: "Design", desc: "Register product designs." },
     { name: "Registration", desc: "Complete IP registrations." },
