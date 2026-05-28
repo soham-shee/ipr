@@ -21,7 +21,7 @@ export default function Footer() {
             
                         <div className="w-full md:w-[45%] lg:w-[15%] flex flex-col items-center md:items-start text-center md:text-left">
                             <h3 className='text-sm text-white font-medium'>Important Links</h3>
-                            <div className="flex flex-col gap-2 mt-6">
+                            <div className="flex flex-col gap-2 mt-2">
                                 <div className="flex flex-col gap-2 mt-1">
                                     <Link to="/" className="text-sm text-white/60 hover:text-white transition-colors">
                                         Home
@@ -48,11 +48,11 @@ export default function Footer() {
             
                         <div className="w-full md:w-[45%] lg:w-[15%] flex flex-col items-center md:items-start text-center md:text-left">
                             <h3 className='text-sm text-white font-medium'>Social Links</h3>
-                            <div className="flex flex-col gap-2 mt-6">
+                            <div className="flex flex-col gap-2 mt-2">
                                 {/* <a href="#" className='text-sm text-white/60 hover:text-white transition-colors'>Twitter</a> */}
                                 <a href="https://www.instagram.com/legalshades?igsh=aTMxbGR2dW53ZnZ1&utm_source=qr" className='text-sm text-white/60 hover:text-white transition-colors'>Instagram</a>
-                                {/* <a href="#" className='text-sm text-white/60 hover:text-white transition-colors'>Youtube</a>
-                                <a href="#" className='text-sm text-white/60 hover:text-white transition-colors'>Linkedin</a> */}
+                                <a href="#" className='text-sm text-white/60 hover:text-white transition-colors'>Youtube</a>
+                                <a href="#" className='text-sm text-white/60 hover:text-white transition-colors'>Linkedin</a>
                             </div>
                         </div>
             
